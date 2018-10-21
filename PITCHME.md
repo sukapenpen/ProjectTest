@@ -15,7 +15,7 @@
 ---
 ### ②テキストファイルのダウンロードとアップロード
 
-[我輩は猫である](https://drive.google.com/drive/folders/1ckgg3mUbs7WkBbEbm53GIgClRGjEdspH?usp=sharing)を（大学のアカウントでログインしてから）ダウンロードしてから下のコードを実行してアップしてください！！！
+[ここから]我輩は猫である(https://drive.google.com/drive/folders/1ckgg3mUbs7WkBbEbm53GIgClRGjEdspH?usp=sharing)を（大学のアカウントでログインして）ダウンロードしてから下のコードを実行してアップしてください！！！
 
 ```
 from google.colab import files
