@@ -30,7 +30,7 @@ uploaded = files.upload()
 ```
 doc = []
 
-#""の中身はファイル名
+#""の中身はさっきのファイル名
 file = open("nekodearu.txt")
 
 for line in file:
