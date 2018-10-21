@@ -42,7 +42,7 @@ file.close()
 ---
 ### ④形態素解析をする関数を定義する
 
-今回は名詞を学習対象にする
+今回は名詞を学習対象にする（下の欄、ちょっと隠れてるからちゃんと全部コピペしてね！）
 
 ```
 import sys
@@ -53,7 +53,7 @@ def WordsAnalysis(sentence):
     try:
         mecab = MeCab.Tagger("-Ochasen")
         data = mecab.parse(sentence)
-        data = StringIO(data.decode("utf-8"))
+        data = StringIO(data)
         data = pd.read_csv(data, sep="\t", header=None)       
         #名詞のみを抽出する
         data = data.loc[(data[3].str.find("名詞") >= 0)]
@@ -88,9 +88,6 @@ model.save("neko.nouns.model")
 
 ---
 ### 疑問
-1.このモデルデータ（学習結果）をどうやって確認するんだろう
-  どうせなら類似単語の検索とかしてみたい
+1.このモデルデータ（学習結果）をどうやって確認するんだろう（どうせなら類似単語の検索とかしてみたい）
 2.このモデルデータの精度をあげるにはどうすればいいんだろう
-
-3.感情のファイルを使って学習するにはどうすればいいのだろう
-  みんながまとめてくれたファイルを使いたい
+3.感情のファイルを使って学習するにはどうすればいいのだろう（みんながまとめてくれたファイルを使いたい）
