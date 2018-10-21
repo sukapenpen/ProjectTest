@@ -30,9 +30,10 @@ uploaded = files.upload()
 ```
 doc = []
 
-f = open('wagahai.txt')
+#""の中身はファイル名
+file = open("nekodearu.txt")
 
-for line in f:
+for line in file:
     doc.append(line)
 
 f.close()
@@ -41,18 +42,20 @@ f.close()
 ---
 ## ④形態素解析をする関数を定義する
 
+今回は名詞を学習対象にする
+
 ```
 import sys
 from io import StringIO
 import MeCab
 import pandas as pd
-def tokenize(sentence):
+def WordsAnalysis(sentence):
     try:
         mecab = MeCab.Tagger("-Ochasen")
         data = mecab.parse(sentence)
-        data = StringIO(data.decode('utf-8'))
-        data = pd.read_csv(data, sep='\t', header=None)       
-        #名詞のみを抽出
+        data = StringIO(data.decode("utf-8"))
+        data = pd.read_csv(data, sep="\t", header=None)       
+        #名詞のみを抽出する
         data = data.loc[(data[3].str.find("名詞") >= 0)]
         texts = list(data.iloc[:, 0])
         return texts
@@ -62,3 +65,32 @@ def tokenize(sentence):
 ```
 
 ---
+## ⑤④で定義した関数を実行する
+
+```
+nounsData=[]
+for sentence in doc:
+    nounsData.append(WordsAnalysis(sentence))
+```
+
+---
+## ⑥学習を行う
+
+```
+from gensim.models import word2vec
+#Word2Vecモデルの学習
+#sizeは特徴量の数、min_count未満の登場数の単語を無視、ある単語とその前後window数の単語に関係性を持たせる、iter回数分繰り返し計算
+model = word2vec.Word2Vec(tokeData, size=100, min_count=5,
+                            window=5, iter=3)
+#モデルの保存、""内はモデルのファイル名
+model.save("neko.nouns.model")
+```
+
+---
+## 疑問
+1.このモデルデータ（学習結果）をどうやって確認するんだろう
+  どうせなら類似単語の検索とかしてみたい
+2.このモデルデータの精度をあげるにはどうすればいいんだろう
+
+3.感情のファイルを使って学習するにはどうすればいいのだろう
+  みんながまとめてくれたファイルを使いたい
