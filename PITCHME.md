@@ -36,7 +36,7 @@ file = open("nekodearu.txt")
 for line in file:
     doc.append(line)
 
-f.close()
+file.close()
 ```
 
 ---
