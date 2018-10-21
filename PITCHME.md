@@ -15,7 +15,7 @@
 ---
 ### ②テキストファイルのダウンロードとアップロード
 
-[ここから]我輩は猫である(https://drive.google.com/drive/folders/1ckgg3mUbs7WkBbEbm53GIgClRGjEdspH?usp=sharing)を（大学のアカウントでログインして）ダウンロードしてから下のコードを実行してアップしてください！！！
+[ここ](https://drive.google.com/drive/folders/1ckgg3mUbs7WkBbEbm53GIgClRGjEdspH?usp=sharing)から『nekodearu.txt』を（大学のアカウントでログインして）ダウンロードしてから下のコードを実行してアップしてください！！！
 
 ```
 from google.colab import files
