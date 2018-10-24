@@ -82,7 +82,7 @@ for sentence in doc:
 from gensim.models import word2vec
 #Word2Vecモデルの学習
 #sizeは特徴量の数、min_count未満の登場数の単語を無視、ある単語とその前後window数の単語に関係性を持たせる、iter回数分繰り返し計算
-model = word2vec.Word2Vec(tokeData, size=100, min_count=5,
+model = word2vec.Word2Vec(nounsData, size=100, min_count=5,
                             window=5, iter=3)
 #モデルの保存、""内はモデルのファイル名
 model.save("neko.nouns.model")
